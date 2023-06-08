@@ -29,7 +29,7 @@ public class login extends browser_setup {
 		submit.click();
 
 		Thread.sleep(2000);
-		
+
 	}
 
 }

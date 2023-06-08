@@ -1,27 +1,39 @@
 package main;
 
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class main {
-	
+
 	@Test()
 	public static void test() throws Exception {
+
+		// Login to the linked in
 
 		String userEmail = "";
 
 		String Password = "";
 
 		login.userLogin(userEmail, Password);
- 
-		String name = "Blockchain";
 
-		String country = "Australia";
+		// Search the details with a location
 
-		sendRequest.searchPeople(name, country);
+		String searchingKeyWord = "";
+
+		String country = "";
+
+		sendRequest.searchPeople(searchingKeyWord, country);
+
+		// How many pages you want to send a request. One page contain 10 user details
 
 		int pageCount = 1;
 
-		sendRequest.sendConnectRequest(pageCount);
+		// Export the user profile link with a sheet
+
+		List<String> peopleDetails = sendRequest.sendConnectRequest(pageCount);
+
+		exportSheet.writeDetails(peopleDetails);
 
 	}
 }

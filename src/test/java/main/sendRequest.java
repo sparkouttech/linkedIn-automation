@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class sendRequest extends browser_setup {
 
 	public static String value;
-	
+
 	public static List<String> nameList = new ArrayList<String>();
 
 	public static void searchPeople(String name, String country) throws Exception {
@@ -59,15 +59,15 @@ public class sendRequest extends browser_setup {
 
 	}
 
-	public static void sendConnectRequest(int pageCount) throws Exception {
+	public static List<String> sendConnectRequest(int pageCount) throws Exception {
 
-		int i = pageCount;
+		for (int i = 1; i <= pageCount; i++) {
 
-		for (i = 1; i <= pageCount; i++) {
+			// Execute the details based on the page
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='People']")));
 
-			for (int j = 1; j <= 2; j++) {
+			for (int j = 1; j <= 10; j++) {
 
 				Thread.sleep(2000);
 
@@ -85,15 +85,15 @@ public class sendRequest extends browser_setup {
 				WebElement userNameis = driver.findElement(
 						By.xpath("//h1[@class='text-heading-xlarge inline t-24 v-align-middle break-words']"));
 
-				value = userNameis.getText();
-				
-				String value2 = driver.getCurrentUrl();
-				
-				nameList.add(value2);
-				
-				System.out.println(nameList);
+				String name = userNameis.getText();
+
+				String value = driver.getCurrentUrl();
+
+				nameList.add(value);
 
 				try {
+
+					// Send a connect request to the peoples
 
 					WebElement connect = driver.findElement(By.xpath("(//span[text()='Connect'])[2]"));
 
@@ -105,21 +105,25 @@ public class sendRequest extends browser_setup {
 
 					sendConnect.click();
 
-					System.out.println("The Connection request sent to " + value);
+					System.out.println("The Connection request sent to " + name);
 
 				} catch (Exception e) {
 
 					try {
 
+						// Send the follow request to users
+
 						WebElement follow = driver.findElement(By.xpath("(//span[text()='Follow'])[2]"));
 
 						follow.click();
 
-						System.out.println("The Follow request sent to " + value);
+						System.out.println("The Follow request sent to " + name);
 
 					} catch (Exception f) {
 
-						System.out.println("Unable to or We already follow " + value);
+						// If we already follow then just exit the loop
+
+						System.out.println("Unable to or We already follow " + name);
 
 					}
 
@@ -135,7 +139,7 @@ public class sendRequest extends browser_setup {
 
 				if (j % 2 == 0) {
 
-					Thread.sleep(125000);
+					// Thread.sleep(125000);
 
 				} else {
 
@@ -151,22 +155,41 @@ public class sendRequest extends browser_setup {
 
 			Thread.sleep(1000);
 
-			js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
+			try {
 
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Next']")));
+				// Avoid the last page failure exception
 
-			WebElement nextPage = driver.findElement(By.xpath("//span[text()='Next']"));
+				if (i != pageCount) {
 
-			nextPage.click();
+					js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
 
-			Thread.sleep(1000);
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Next']")));
 
-			driver.navigate().refresh();
+					WebElement nextPage = driver.findElement(By.xpath("//span[text()='Next']"));
+
+					nextPage.click();
+
+					Thread.sleep(1000);
+
+					driver.navigate().refresh();
+
+				} else {
+
+					continue;
+
+				}
+
+			} catch (Exception f) {
+
+				continue;
+
+			}
 
 		}
 
 		System.out.println("All the request sent to the peoples");
 
-	}
+		return nameList;
 
+	}
 }
