@@ -7,9 +7,9 @@ public class main {
 	@Test()
 	public static void test() throws Exception {
 
-		String userEmail = "inichocos@gmail.com";
+		String userEmail = "";
 
-		String Password = "Inichoco420";
+		String Password = "";
 
 		login.userLogin(userEmail, Password);
  
