@@ -1,12 +1,15 @@
 package main;
 
+import org.testng.annotations.Test;
+
 public class main {
+	
+	@Test()
+	public static void test() throws Exception {
 
-	public static void main(String[] args) throws Exception {
+		String userEmail = "inichocos@gmail.com";
 
-		String userEmail = "";
-
-		String Password = "";
+		String Password = "Inichoco420";
 
 		login.userLogin(userEmail, Password);
  
