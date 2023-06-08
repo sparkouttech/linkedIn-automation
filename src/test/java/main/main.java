@@ -21,9 +21,9 @@ public class main {
 
 		String searchingKeyWord = "";
 
-		String country = "";
+		String Country = "";
 
-		sendRequest.searchPeople(searchingKeyWord, country);
+		sendRequest.searchPeople(searchingKeyWord, Country);
 
 		// How many pages you want to send a request. One page contain 10 user details
 
