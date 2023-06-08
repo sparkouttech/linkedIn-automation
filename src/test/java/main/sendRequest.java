@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -8,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class sendRequest extends browser_setup {
 
 	public static String value;
+	
+	public static List<String> nameList = new ArrayList<String>();
 
 	public static void searchPeople(String name, String country) throws Exception {
 
@@ -62,7 +67,7 @@ public class sendRequest extends browser_setup {
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='People']")));
 
-			for (int j = 1; j <= 10; j++) {
+			for (int j = 1; j <= 2; j++) {
 
 				Thread.sleep(2000);
 
@@ -81,6 +86,10 @@ public class sendRequest extends browser_setup {
 						By.xpath("//h1[@class='text-heading-xlarge inline t-24 v-align-middle break-words']"));
 
 				value = userNameis.getText();
+				
+				nameList.add(value);
+				
+				System.out.println(nameList);
 
 				try {
 

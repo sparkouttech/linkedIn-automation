@@ -5,7 +5,7 @@
     <classes>
       <class name="main.main">
         <methods>
-          <include name="request"/>
+          <include name="test"/>
         </methods>
       </class> <!-- main.main -->
     </classes>

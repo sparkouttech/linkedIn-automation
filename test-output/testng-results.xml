@@ -2,22 +2,22 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-08T17:07:12 IST" name="Default suite" finished-at="2023-06-08T17:08:15 IST" duration-ms="63378">
+  <suite started-at="2023-06-08T19:21:54 IST" name="Default suite" finished-at="2023-06-08T19:26:02 IST" duration-ms="247991">
     <groups>
     </groups>
-    <test started-at="2023-06-08T17:07:12 IST" name="Default test" finished-at="2023-06-08T17:08:15 IST" duration-ms="63378">
+    <test started-at="2023-06-08T19:21:54 IST" name="Default test" finished-at="2023-06-08T19:26:02 IST" duration-ms="247991">
       <class name="main.main">
-        <test-method signature="request()[pri:0, instance:main.main@47d9a273]" started-at="2023-06-08T17:07:12 IST" name="request" finished-at="2023-06-08T17:08:15 IST" duration-ms="63233" status="FAIL">
+        <test-method signature="test()[pri:0, instance:main.main@2d710f1a]" started-at="2023-06-08T19:21:54 IST" name="test" finished-at="2023-06-08T19:26:02 IST" duration-ms="247823" status="FAIL">
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //div[@class='share-box-feed-entry__top-bar'] (tried for 50 second(s) with 5000 milliseconds interval)]]>
+              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //span[text()='Next'] (tried for 50 second(s) with 5000 milliseconds interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[@class='share-box-feed-entry__top-bar'] (tried for 50 second(s) with 5000 milliseconds interval)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //span[text()='Next'] (tried for 50 second(s) with 5000 milliseconds interval)
 at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
 at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-at main.sendRequest.searchPeople(sendRequest.java:14)
-at main.main.request(main.java:20)
+at main.sendRequest.sendConnectRequest(sendRequest.java:154)
+at main.main.test(main.java:24)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -46,17 +46,16 @@ at org.testng.TestNG.run(TestNG.java:1067)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Next']"}
   (Session info: chrome=114.0.5735.106)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: '4.3.0', revision: 'a4995e2c09*'
 System info: host: 'Iniyavans-MacBook-Air.local', ip: 'fe80:0:0:0:10a2:48e6:90b0:9fb%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.6.3', java.version: '17.0.6'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [a641cce3b896afaa0e359bf70ac13d62, findElement {using=xpath, value=//div[@class='share-box-feed-entry__top-bar']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.106, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /var/folders/6s/s3gqm7dn49l...}, goog:chromeOptions: {debuggerAddress: localhost:62364}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://localhost:62364/devtoo..., se:cdpVersion: 114.0.5735.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a641cce3b896afaa0e359bf70ac13d62
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+Command: [929649de69c9f24122348a8ab0cfa375, findElement {using=xpath, value=//span[text()='Next']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.106, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /var/folders/6s/s3gqm7dn49l...}, goog:chromeOptions: {debuggerAddress: localhost:50362}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://localhost:50362/devtoo..., se:cdpVersion: 114.0.5735.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 929649de69c9f24122348a8ab0cfa375
+at jdk.internal.reflect.GeneratedConstructorAccessor13.newInstance(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
@@ -80,7 +79,7 @@ at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- request -->
+        </test-method> <!-- test -->
       </class> <!-- main.main -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
