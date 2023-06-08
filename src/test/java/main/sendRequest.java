@@ -87,7 +87,9 @@ public class sendRequest extends browser_setup {
 
 				value = userNameis.getText();
 				
-				nameList.add(value);
+				String value2 = driver.getCurrentUrl();
+				
+				nameList.add(value2);
 				
 				System.out.println(nameList);
 
