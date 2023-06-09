@@ -12,6 +12,8 @@ public class sendRequest extends browser_setup {
 
 	public static String value;
 
+	public static String name;
+
 	public static List<String> nameList = new ArrayList<String>();
 
 	public static void searchPeople(String name, String country) throws Exception {
@@ -67,7 +69,7 @@ public class sendRequest extends browser_setup {
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='People']")));
 
-			for (int j = 1; j <= 10; j++) {
+			for (int j = 1; j <= 3; j++) {
 
 				Thread.sleep(2000);
 
@@ -78,20 +80,22 @@ public class sendRequest extends browser_setup {
 
 				peopleName.click();
 
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//span[text()='More'])[2]")));
-
-				Thread.sleep(1000);
-
-				WebElement userNameis = driver.findElement(
-						By.xpath("//h1[@class='text-heading-xlarge inline t-24 v-align-middle break-words']"));
-
-				String name = userNameis.getText();
-
-				String value = driver.getCurrentUrl();
-
-				nameList.add(value);
+				Thread.sleep(2000);
 
 				try {
+
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//span[text()='More'])[2]")));
+
+					Thread.sleep(1000);
+
+					WebElement userNameis = driver.findElement(
+							By.xpath("//h1[@class='text-heading-xlarge inline t-24 v-align-middle break-words']"));
+
+					name = userNameis.getText();
+
+					value = driver.getCurrentUrl();
+
+					nameList.add(value);
 
 					// Send a connect request to the peoples
 
@@ -107,6 +111,10 @@ public class sendRequest extends browser_setup {
 
 					System.out.println("The Connection request sent to " + name);
 
+					Thread.sleep(1000);
+
+					driver.navigate().back();
+
 				} catch (Exception e) {
 
 					try {
@@ -119,11 +127,29 @@ public class sendRequest extends browser_setup {
 
 						System.out.println("The Follow request sent to " + name);
 
+						Thread.sleep(1000);
+
+						driver.navigate().back();
+
 					} catch (Exception f) {
 
-						// If we already follow then just exit the loop
+						try {
 
-						System.out.println("Unable to or We already follow " + name);
+							WebElement clickGotit = driver.findElement(By.xpath("//span[text()='Got it']"));
+
+							clickGotit.click();
+
+						} catch (Exception g) {
+
+							// If we already follow then just exit the loop
+
+							System.out.println("Unable to or We already follow " + name);
+
+							Thread.sleep(1000);
+
+							driver.navigate().back();
+
+						}
 
 					}
 
@@ -131,15 +157,11 @@ public class sendRequest extends browser_setup {
 
 				Thread.sleep(1000);
 
-				driver.navigate().back();
-
-				Thread.sleep(1000);
-
 				driver.navigate().refresh();
 
 				if (j % 2 == 0) {
 
-					// Thread.sleep(125000);
+					Thread.sleep(120000);
 
 				} else {
 
@@ -169,7 +191,9 @@ public class sendRequest extends browser_setup {
 
 					nextPage.click();
 
-					Thread.sleep(1000);
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='People']")));
+
+					Thread.sleep(2000);
 
 					driver.navigate().refresh();
 

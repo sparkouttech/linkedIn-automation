@@ -35,7 +35,7 @@ public class browser_setup {
 
 		driver.get(baseURL);
 
-		wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(50)).pollingEvery(Duration.ofSeconds(5))
+		wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(5))
 				.ignoring(Exception.class);
 
 		js = (JavascriptExecutor) driver;
