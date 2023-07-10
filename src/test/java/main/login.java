@@ -12,6 +12,7 @@ public class login extends browser_setup {
 		browser_setup.setup(linkedin);
 
 		Thread.sleep(1000);
+		
 		WebElement signIn = driver.findElement(By.xpath("//button[contains(text(),' Sign in ')]"));
 
 		signIn.click();

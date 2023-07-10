@@ -61,7 +61,7 @@ public class sendRequest extends browser_setup {
 
 	}
 
-	public static List<String> sendConnectRequest(int pageCount) throws Exception {
+	public static List<String> sendConnectRequest(int pageCount, int waitingTime) throws Exception {
 
 		for (int i = 1; i <= pageCount; i++) {
 
@@ -159,9 +159,13 @@ public class sendRequest extends browser_setup {
 
 				driver.navigate().refresh();
 
+				waitingTime *= 60;
+
+				waitingTime *= 1000;
+
 				if (j % 2 == 0) {
 
-					Thread.sleep(120000);
+					Thread.sleep(waitingTime);
 
 				} else {
 
