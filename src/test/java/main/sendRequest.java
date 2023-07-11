@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -14,7 +15,7 @@ public class sendRequest extends browser_setup {
 
 	public static String name;
 
-	public static List<String> nameList = new ArrayList<String>();
+	public static List<List<Object>> nameList = new ArrayList<>();
 
 	public static void searchPeople(String name, String country) throws Exception {
 
@@ -61,7 +62,10 @@ public class sendRequest extends browser_setup {
 
 	}
 
-	public static List<String> sendConnectRequest(int pageCount, int waitingTime) throws Exception {
+	public static List<List<Object>> sendConnectRequest(int pageCount, int waitingTime, int waitperUser)
+			throws Exception {
+
+		int watingMin = waitingTime * 1000;
 
 		for (int i = 1; i <= pageCount; i++) {
 
@@ -69,7 +73,7 @@ public class sendRequest extends browser_setup {
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='People']")));
 
-			for (int j = 1; j <= 3; j++) {
+			for (int j = 1; j <= 10; j++) {
 
 				Thread.sleep(2000);
 
@@ -95,7 +99,7 @@ public class sendRequest extends browser_setup {
 
 					value = driver.getCurrentUrl();
 
-					nameList.add(value);
+					nameList.add(Arrays.asList((Object) value));
 
 					// Send a connect request to the peoples
 
@@ -159,13 +163,9 @@ public class sendRequest extends browser_setup {
 
 				driver.navigate().refresh();
 
-				waitingTime *= 60;
+				if (j % waitperUser == 0) {
 
-				waitingTime *= 1000;
-
-				if (j % 2 == 0) {
-
-					Thread.sleep(waitingTime);
+					Thread.sleep(watingMin);
 
 				} else {
 

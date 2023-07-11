@@ -1,21 +1,14 @@
 package main;
 
-import java.util.List;
+public class Main {
 
-import org.testng.annotations.Test;
+	public static void main(String args[]) throws Exception {
 
-public class main {
-
-	@Test()
-	public static void test() throws Exception {
-
-		// Login to the linked in
+		// Login credentials for Linked-In
 
 		String userEmail = "";
 
 		String Password = "";
-
-		login.userLogin(userEmail, Password);
 
 		// Search the details with a location
 
@@ -23,21 +16,19 @@ public class main {
 
 		String Country = "";
 
-		sendRequest.searchPeople(searchingKeyWord, Country);
+		// Wating time in sec, If you need a 2 min wating time, Just give 120
 
-		// Wating time in min, For ex if you need a 2 min break, Just give 2
-
-		int waitingTime = 2;
+		int waitingTime = 1;
 
 		// How many pages you want to send a request. One page contain 10 user details
 
 		int pageCount = 1;
 
-		// Export the user profile link with a sheet
+		// Waiting time per User
 
-		List<String> peopleDetails = sendRequest.sendConnectRequest(pageCount, waitingTime);
+		int waitperUser = 2;
 
-		exportSheet.writeDetails(peopleDetails);
+		process.callBack(userEmail, Password, searchingKeyWord, Country, waitingTime, pageCount, waitperUser);
 
 	}
 }
