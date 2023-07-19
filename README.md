@@ -1,6 +1,8 @@
-# linkedIn-automation
+# linkedIn-Automation
 
-### Author
+## Author
 
-- [Iniyavan](https://github.com/iniyavans)
+[Iniyavan Murugesan](https://github.com/iniyavans) 
 
+Lead Quality Engineer,
+Sparkout Tech Solutions (Pvt.) Ltd.
